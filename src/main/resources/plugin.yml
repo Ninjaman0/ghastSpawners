@@ -1,0 +1,5 @@
+name: ghastSpawners
+version: '1.0'
+main: com.ninja.ghastSpawners.GhastSpawners
+api-version: '1.21'
+authors: [ Ninja0_0 UWU ]
