@@ -1,4 +1,8 @@
 package com.ninja.ghastSpawners.abstracts;
 
-public class AbstractGui {
+import org.bukkit.entity.Player;
+
+public abstract class AbstractGui {
+
+    public abstract void cleanCachePlayer(Player player);
 }

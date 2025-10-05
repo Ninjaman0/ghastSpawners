@@ -1,20 +1,19 @@
-package com.ninja.ghastSpawners.gui.gui;
+package com.ninja.ghastSpawners.gui;
 
 import com.google.common.collect.Maps;
 import java.util.Map;
 import java.util.Optional;
 
-import com.ninja.ghastSpawners.gui.GuiListener;
-import net.codava.virtualspawner.SpawnerPlugin;
-import net.codava.virtualspawner.abstracts.AbstractGui;
-import net.codava.virtualspawner.abstracts.AbstractManager;
+import com.ninja.ghastSpawners.GhastSpawners;
+import com.ninja.ghastSpawners.abstracts.AbstractGui;
+import com.ninja.ghastSpawners.abstracts.AbstractManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class GuiManager extends AbstractManager {
     private Map<Player, AbstractGui> opened = Maps.newConcurrentMap();
 
-    public void load(SpawnerPlugin plugin) {
+    public void load(GhastSpawners plugin) {
         super.load(plugin);
         Bukkit.getPluginManager().registerEvents(new GuiListener(this), plugin);
     }
@@ -28,13 +27,13 @@ public class GuiManager extends AbstractManager {
 
     public void removeOpened(Player player) {
         if (this.opened.containsKey(player)) {
-            ((AbstractGui)this.opened.get(player)).cleanCachePlayer(player);
+            this.opened.get(player).cleanCachePlayer(player);
         }
 
         this.opened.remove(player);
     }
 
     public Optional<AbstractGui> getOpened(Player player) {
-        return Optional.ofNullable((AbstractGui)this.opened.getOrDefault(player, (Object)null));
+        return Optional.ofNullable(this.opened.getOrDefault(player, null));
     }
 }

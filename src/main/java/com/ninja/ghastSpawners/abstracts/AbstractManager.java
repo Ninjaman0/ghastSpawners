@@ -1,4 +1,13 @@
 package com.ninja.ghastSpawners.abstracts;
 
-public class AbstractManager {
+import com.ninja.ghastSpawners.GhastSpawners;
+
+public abstract class AbstractManager {
+    protected GhastSpawners plugin;
+
+    public void load(GhastSpawners plugin) {
+        this.plugin = plugin;
+    }
+
+    public abstract void unload();
 }
